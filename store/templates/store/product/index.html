@@ -16,21 +16,23 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1>{{ category_name.name }}</h1>
+            <h1>{{ category.name }}</h1>
             <hr>
             <div class="row">
                 {% for item in products %}
                     <div class="col-md-3">
                         <div class="card">
                             
-
-                                <div class="card-body">
-                                    <div class="category-image">
-                                        <img src="{{ item.product_image.url }}" alt="">
-                                    </div>
-                                    <h3 class="text-center"> {{ item.name }} </h3>  
-                                    <span class="flaot-start">{{item.original_price | stringformat:'d'}}</span>
-                                    <span class="flaot-end">{{item.selling_price | stringformat:'d'}}</span>
+                                <a href=" {% url 'productview' item.category.slug item.slug %}">
+                                    
+                                    <div class="card-body">
+                                        <div class="category-image">
+                                            <img src="{{ item.product_image.url }}" alt="">
+                                        </div>
+                                        <h3 class="text-center"> {{ item.name }} </h3>  
+                                        <span class="flaot-start">{{item.original_price | stringformat:'d'}}</span>
+                                        <span class="flaot-end">{{item.selling_price | stringformat:'d'}}</span>
+                                    </a>
                                     
                                 </div>
                             
