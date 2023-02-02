@@ -1,0 +1,46 @@
+
+
+{% extends "store/layout/main.html" %}
+    
+{% block content %}
+<div class="py-3 bg-primary">
+    <div class="container">
+        <a class="text-white" href=" {% url 'home' %}">Home /</a>
+        <a class="text-white" href=" {% url 'collections' %}">collections /</a>
+        <a class="text-white" href=" {% url 'collectionsview' category.slug %}">{{category.name}}</a>
+
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>{{ category_name.name }}</h1>
+            <hr>
+            <div class="row">
+                {% for item in products %}
+                    <div class="col-md-3">
+                        <div class="card">
+                            
+
+                                <div class="card-body">
+                                    <div class="category-image">
+                                        <img src="{{ item.product_image.url }}" alt="">
+                                    </div>
+                                    <h3 class="text-center"> {{ item.name }} </h3>  
+                                    <span class="flaot-start">{{item.original_price | stringformat:'d'}}</span>
+                                    <span class="flaot-end">{{item.selling_price | stringformat:'d'}}</span>
+                                    
+                                </div>
+                            
+                        </div>
+                    </div>
+                  
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
