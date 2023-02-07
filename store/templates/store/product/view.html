@@ -24,9 +24,8 @@
             </div>
         </div>
     </div>
-</div>
-<div class="card" style="width: 18rem;">
-    {% if products.tag %}
+    <div class="card product_data" style="width: 18rem;">
+        {% if products.tag %}
        <label class = "product-viewtag">{{products.tag}}</label>
     {% endif %}
     <div class="col-md-2">
@@ -44,7 +43,7 @@
         <div>quantity</div>
             <div class="input-group text-center mb-3" style="width: 130px;">
                 <button class="input-group-text decrement-btn">-</button>
-                <input type="text" name="quantity" class="form-control text-center" value ="1" id="">
+                <input type="text" name="quantity" class="form-control text-center qty-input" value ="1" id="">
                 <button class="input-group-text increment-btn">+</button>
                 
             </div>
@@ -59,5 +58,6 @@
       </div>
       
     </div>
-  </div>
+</div>
+</div>
 {% endblock content %}
