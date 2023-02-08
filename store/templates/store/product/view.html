@@ -40,6 +40,8 @@
     <div class="card-body">
       <h5 class="card-title">Card title</h5>
       <div class="col-md-4">
+        {% csrf_token %}
+        <input type="hidden" class="prod_id" value="{{ products.id }}" name="">
         <div>quantity</div>
             <div class="input-group text-center mb-3" style="width: 130px;">
                 <button class="input-group-text decrement-btn">-</button>
@@ -51,7 +53,7 @@
       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
       <div class="col md-4">
         {% if products.quantity > 0 %}
-            <button type="button" class="btn btn-primary ">add to cart</button>
+            <button type="button" class="btn btn-primary addToCartBtn">add to cart</button>
         {% endif %}
         <button type="button" class="btn btn-primary ">add to wishlist</button>
 
