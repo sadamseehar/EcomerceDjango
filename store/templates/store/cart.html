@@ -1,0 +1,62 @@
+
+
+{% extends "store/layout/main.html" %}
+    
+{% block content %}
+<div class="py-3 bg-primary">
+    <div class="container">
+        <a class="text-white" href=" {% url 'home' %}">Home /</a>
+        <a class="text-white" href=" {% url 'cart' %}">Cart</a>
+        
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow">
+                <div class="card-body cartdata">
+
+                    {% if cart %}
+                        {% for item in cart %}
+                            <div class="row product_data">
+                                <div class="col-md-2 my-auto">
+                                    <img src="{{ item.product.product_image.url }}" height="70px" width="70px" alt="" srcset="">
+                                </div>
+                                <div class="col-md-3 my-auto">
+                                    <h6>{{ item.product.name }}</h6>
+                                </div>
+                                <div class="col-md-2 my-auto">
+                                    <h6>{{ item.product.selling_price }}</h6>
+                                </div>
+                                <div class="col-md-3 my-auto">
+                                    <input type="hidden" name="" class="prod_id" value="{{ item.product_id }}">
+                                    {% csrf_token %}
+                                    {% if item.product.quantity >= item.product_qty %}
+                                    <div class="input-group text-center mb-3" style="width: 130px;">
+                                        <button class="input-group-text changeQuantity decrement-btn">-</button>
+                                        <input type="text" class="text-center form-control qty-input" value="{{ item.product_qty }}">
+                                        <button class="input-group-text changeQuantity increment-btn">+</button>
+                                    </div>
+                                    {% else %}
+                                    <h5>Out of stock</h5>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-2 my-auto">
+                                    <button class="btn btn-danger delete-cart-item">Remove</button>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <h1>cart is empty</h1>  
+                    {% endif %}
+                
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}

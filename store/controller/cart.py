@@ -26,7 +26,29 @@ def addtocart(request):
     
     return redirect("/")
 
-            
+def viewcart(request):
+    cart = Cart.objects.filter(user=request.user)
+    context = {'cart':cart}
+    return render(request,"store/cart.html",context)      
 
-                    
-                
+
+def updatecart(request):
+    if request.method == 'POST':
+        prod_id = int(request.POST.get('product_id'))
+        if(Cart.objects.filter(user=request.user, product_id=prod_id )):
+            prod_qty = int(request.POST.get('product_qty'))
+            cart = Cart.objects.get(product_id=prod_id,user=request.user)
+            cart.product_qty = prod_qty
+            cart.save()
+    return redirect("/")          
+
+
+
+def deletecartitem(request):
+    if request.method == 'POST':
+        prod_id = int(request.POST.get('product_id'))
+        if(Cart.objects.filter(user=request.user, product_id=prod_id)):
+            cartitem = Cart.objects.get(product_id = prod_id , user=request.user)
+            cartitem.delete()
+        return JsonResponse({'status':'Deleted succefully'})
+    return redirect("/")
