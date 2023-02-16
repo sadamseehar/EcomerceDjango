@@ -15,6 +15,9 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{% url 'cart' %}">Cart</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'wishlist' %}">wishlist</a>
+          </li>
           {% if request.user.is_authenticated %}
 
           <li class="nav-item">
