@@ -1,7 +1,7 @@
 from django.urls import path
 from . import views
 
-from store.controller import authview,cart,wishlist
+from store.controller import authview,cart,wishlist,checkout
 
 
 
@@ -23,6 +23,11 @@ urlpatterns = [
     path("wishlist", wishlist.index, name="wishlist"),
     path("add-to-wishlist",wishlist.addtowishlist, name ='addtowishlist'),
     path('delete-wishlist-item',wishlist.deletewishlistitem, name='deletewishlistitem'),
+
+
+    path('checkout', checkout.index , name = "checkout"),
+
+
 
 
 ]
