@@ -30,7 +30,7 @@ def addtowishlist(request):
             else:
                 return JsonResponse({'status':'product not found'})
         else:
-            return JsonResponse({'statuc','login to continue'})
+            return JsonResponse({'status','login to continue'})
     return redirect("/")
 
 

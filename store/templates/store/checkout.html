@@ -10,59 +10,61 @@
 </div>
 
 <div class="container mt-3">
-    <div class="row">
-        <div class="col-md-7 ">
-            <div class="card shadow">
-                <div class="card-body shadow">
-                    <h4>Details</h4>
-                    <hr>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label for="">First Name</label>
-                            <input type="text" class="form-control" placeholder="enter first name" value="">
+    <form action="{% url 'placeorder' %}" method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-7 ">
+                <div class="card shadow">
+                    <div class="card-body shadow">
+                        <h4>Details</h4>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="">First Name</label>
+                            <input type="text" name="fname" class="form-control" placeholder="enter first name" value="">
 
                         </div>
                         <div class="col-md-6">
                             <label for="">Last Name</label>
-                            <input type="text" class="form-control" placeholder="enter first name" value="">
+                            <input type="text" name="lname" class="form-control" placeholder="enter first name" value="">
 
                         </div>
                         <div class="col-md-6">
                             <label for="">Email</label>
-                            <input type="text" class="form-control" placeholder="enter first name" value="">
+                            <input type="text" name="email" class="form-control" placeholder="enter first name" value="">
 
                         </div>
                         <div class="col-md-6">
                             <label for="">Phone</label>
-                            <input type="text" class="form-control" placeholder="enter first name" value="">
+                            <input type="text" name="phone" class="form-control" placeholder="enter first name" value="">
 
                         </div>
                         <div class="col-md-12">
                             <label for="">Address</label>
-                          <textarea name="" id="" class="form-control" cols="30" rows="10"></textarea>
+                          <textarea name="address" id="" class="form-control" cols="30" rows="10"></textarea>
 
                         </div>
                         <div class="col-md-6">
                             <label for="">City</label>
-                            <input type="text" class="form-control" placeholder="enter first name" value="">
+                            <input name="city" type="text" class="form-control" placeholder="enter first name" value="">
 
                         </div>
                         <div class="col-md-6">
                             <label for="">State</label>
-                            <input type="text" class="form-control" placeholder="enter first name" value="">
+                            <input name="state" type="text" class="form-control" placeholder="enter first name" value="">
 
                         </div>
                         <div class="col-md-6">
                             <label for="">Country</label>
-                            <input type="text" class="form-control" placeholder="enter first name" value="">
+                            <input name="country" type="text" class="form-control" placeholder="enter first name" value="">
 
                         </div>
                         <div class="col-md-6">
                             <label for="">Pin Code</label>
-                            <input type="text" class="form-control" placeholder="enter first name" value="">
+                            <input name="pincode" type="text" class="form-control" placeholder="enter first name" value="">
 
                         </div>
-
+ 
                     </div>
                 </div>
             </div>
@@ -73,7 +75,7 @@
                     <h5>Order Summary</h5>
                     <hr>
                     {% if cartitems %}
-                        <table class="table table-borders">
+                    <table class="table table-borders">
                             <thead>
                                 <tr>
                                     <th>Name</th>
@@ -97,16 +99,18 @@
                         <h6>Grand Total
                             <span class="float-end">Rs {{ total_price }} </span>
                         </h6>
+                        <input type="hidden" value="COD" name="payment_mode">
                         <div class="mt-3">
-                            <a href="" class="btn btn-success w-100 ">Place Order</a>
+                            <button type="submit" class="btn btn-success w-100 ">Place Order</button>
                         </div>
-                    {% else %}
+                        {% else %}  
                         <h4>cart is empt</h4>
-                    {% endif %}
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </form>
 </div>
 
 

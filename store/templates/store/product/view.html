@@ -5,8 +5,8 @@
 {% block content %}
 <div class="py-3 bg-primary">
     <div class="container">
-        <a class="text-white" href=" {% url 'home' %}">Home /</a>
-        <a class="text-white" href=" {% url 'collections' %}">collections /</a>
+        <a class="text-white {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href=" {% url 'home' %}">Home /</a>
+        <a class="text-white {% if request.resolver_match.url_name == 'collections' %} active{% endif %}" href=" {% url 'collections' %}">collections /</a>
         <a class="text-white" href=" {% url 'collectionsview' products.category.slug %}">{{products.category.name}}</a>
         <a class="text-white" href=" {% url 'productview' products.category.slug products.slug %}">{{products.name}}</a>
 
